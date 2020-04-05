@@ -142,7 +142,7 @@ void loop()
     if (cmdHighSpeed()) {
         setHighSpeed();
     } else if (cmdLowSpeed()) {
-    setLowSpeed();
+        setLowSpeed();
     } else if (cmdMoveIn()) {
         enable();
         moveIn();
