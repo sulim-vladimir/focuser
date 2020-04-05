@@ -114,7 +114,7 @@ bool cmdHighSpeed()
 
 bool cmdLowSpeed()
 {
-  return cmd == 'l';
+    return cmd == 'l';
 }
 
 bool setHighSpeed()
@@ -139,9 +139,9 @@ void loop()
 		cmd = Serial.read();
 	}
 
-  if (cmdHighSpeed()) {
-    setHighSpeed();
-  } else if (cmdLowSpeed()) {
+    if (cmdHighSpeed()) {
+        setHighSpeed();
+    } else if (cmdLowSpeed()) {
     setLowSpeed();
 	} else if (cmdMoveIn()) {
 		enable();
