@@ -88,6 +88,24 @@ In the Ekos profile choose the **MoonLite** focuser, port `/dev/ttyUSB0` (or the
 `/dev/serial/by-id/usb-1a86_USB2.0-Serial-...` link), 9600 baud. After connecting, the INDI Control
 Panel → MoonLite → Main Control shows the position.
 
+## Zero point and session start
+
+**Once:** rack the focuser fully in (in button or by hand on the knob, never a long Ekos move into
+the hard stop), then INDI Control Panel → MoonLite → Main Control → **Sync** = 0 → Set. The firmware
+never goes below 0, so the inner end is now also a soft limit for Ekos and the in button.
+
+Then move out to just short of the outer end, note the position and enter a slightly lower value as
+**Max Position** on the same tab, so Ekos (including autofocus) stays inside the travel. Note the
+in-focus position of each camera too: next time go there directly and fine-tune with autofocus.
+
+**Each session:** just connect. The position is saved every time the motor stops, so it stays valid
+across power-offs.
+
+**Re-zero** (rack fully in, Sync = 0) only if the knob was turned by hand while the motor was asleep,
+the motor stalled against an end, or steps might otherwise have been lost.
+
+Autofocus is still needed each session: focus shifts with temperature and with the camera used.
+
 ## Autofocus recommendations (150/750, Ekos)
 
 Starting values; refine them from real focus curves.
