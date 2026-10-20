@@ -1,4 +1,5 @@
 // Focuser controller: Arduino Nano + DRV8825, 1/32 microstepping.
+// Pins: STEP A0, DIR A1, SLP D5, M0-M2 D11/D10/D9, buttons in D3 / out D2.
 //
 // Serial 9600 baud. Two command sets:
 //
@@ -23,10 +24,10 @@
 #include <AccelStepper.h>
 #include <EEPROM.h>
 
-#define M0  8
-#define M1  7
-#define M2  6
-#define SLP 4
+#define M0  11
+#define M1  10
+#define M2  9
+#define SLP 5
 #define IN_BTN 3
 #define OUT_BTN 2
 
@@ -55,7 +56,7 @@ struct __attribute__((packed)) PosRecord {
     uint8_t check;
 };
 
-AccelStepper motor(1, A2, A3);
+AccelStepper motor(AccelStepper::DRIVER, A0, A1);
 unsigned long prevCmdTime;
 bool standby = false;
 bool jogging = false;
